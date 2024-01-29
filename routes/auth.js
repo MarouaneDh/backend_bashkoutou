@@ -7,7 +7,7 @@ const {
     registerRules,
 } = require("../middlewares/bodyValidator");
 
-const { register, login } = require("../controllers/user.controller");
+const { register, login } = require("../controllers/auth.controller");
 
 //User registration
 router.post("/register", registerRules(), validator, register)
