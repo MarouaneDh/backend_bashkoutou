@@ -15,6 +15,7 @@ router.post("/register", registerRules(), validator, register)
 //User login
 router.post("/login", loginRules(), validator, login)
 
+//token test api
 router.get("/me", isAuth, (req, res) => {
     res.status(200).send({ user: req.user });
 });
