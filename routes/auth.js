@@ -5,7 +5,7 @@ const {
     validator,
     loginRules,
     registerRules,
-} = require("../middlewares/bodyValidator");
+} = require("../middlewares/authBodyValidator");
 
 const { register, login } = require("../controllers/auth.controller");
 

@@ -25,10 +25,9 @@ const loginRules = () => [
     body("email", "Invalid email").isEmail(),
     body(
         "password",
-        "The password must contain between 8 and 20 characters"
+        "password should contain at least 8 characters"
     ).isLength({
         min: 8,
-        max: 20,
     }),
 ];
 
