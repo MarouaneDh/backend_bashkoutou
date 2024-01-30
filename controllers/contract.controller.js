@@ -17,7 +17,8 @@ const getAllContracts = async (req, res) => {
         const total = await Contract.countDocuments();
         const result = await Contract.find()
             .limit(limit * 1)
-            .skip((page - 1) * limit);
+            .skip((page - 1) * limit)
+            .select("-__v");
 
         res.send({
             page,
@@ -25,7 +26,7 @@ const getAllContracts = async (req, res) => {
             limit,
             response: result,
             message: "Got all contracts with success",
-        });
+        })
     } catch (error) {
         res.status(400).send({ message: "Can't get contracts" });
     }
