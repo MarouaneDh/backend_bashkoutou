@@ -44,6 +44,27 @@ const getOneContract = async (req, res) => {
     }
 };
 
+const updateContract = async (req, res) => {
+    const _id = req.params.id;
+
+    try {
+        const contract = await Contract.findById(_id);
+
+        if (!contract) {
+            return res.status(404).send({ message: "Contract not found" });
+        }
+
+        // Update the contract fields based on the request body
+        Object.assign(contract, req.body);
+
+        await contract.save();
+
+        res.status(200).send({ message: "Contract updated successfully", contract });
+    } catch (error) {
+        res.status(400).send({ message: "Unable to update contract" });
+    }
+};
+
 const deleteContract = async (req, res) => {
     const _id = req.params.id
 
@@ -63,5 +84,6 @@ module.exports = {
     createContract,
     getAllContracts,
     getOneContract,
+    updateContract,
     deleteContract
 }
