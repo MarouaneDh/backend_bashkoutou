@@ -44,8 +44,24 @@ const getOneContract = async (req, res) => {
     }
 };
 
+const deleteContract = async (req, res) => {
+    const _id = req.params.id
+
+    try {
+        const result = await Contract.deleteOne({ _id });
+
+        result.deletedCount === 1
+            ? res.status(200).send({ message: "Contract was deleted successfully" })
+            : res.status(404).send({ message: "There is no contract with this ID" })
+
+    } catch (error) {
+        res.send("Contract wasn't deleted");
+    }
+};
+
 module.exports = {
     createContract,
     getAllContracts,
-    getOneContract
+    getOneContract,
+    deleteContract
 }
