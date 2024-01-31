@@ -33,7 +33,19 @@ const getAllContracts = async (req, res) => {
     }
 };
 
+const getOneContract = async (req, res) => {
+    const _id = req.params.id
+
+    try {
+        const result = await Contract.findOne({ _id })
+        res.send({ response: result, message: "got contract with success" });
+    } catch (error) {
+        res.status(400).send({ message: "there is no contract with this id" });
+    }
+};
+
 module.exports = {
     createContract,
-    getAllContracts
+    getAllContracts,
+    getOneContract
 }
