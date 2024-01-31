@@ -26,6 +26,8 @@ const userSchema = new schema({
     phoneNumber: {
         type: String,
         required: false
-    }
-});
+    },
+    created_at: { type: Date },
+    updated_at: { type: Date }
+}, { timestamps: true });
 module.exports = User = mongoose.model("user", userSchema);

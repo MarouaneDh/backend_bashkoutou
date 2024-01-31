@@ -67,6 +67,6 @@ const contractSchema = new schema({
         type: Array,
         required: true,
     },
-});
+}, { timestamps: true });
 
 module.exports = Contract = mongoose.model("contract", contractSchema);

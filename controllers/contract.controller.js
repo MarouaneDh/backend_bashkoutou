@@ -18,7 +18,8 @@ const getAllContracts = async (req, res) => {
         const result = await Contract.find()
             .limit(limit * 1)
             .skip((page - 1) * limit)
-            .select("-__v");
+            .select("-__v")
+            .sort({ createdAt: -1 });
 
         res.send({
             page,
